@@ -55,3 +55,35 @@ let un;
 console.log("Undefined ", un);
 
 console.log("type of value :", typeof un);
+
+// 5. null datatype
+
+let n = null;
+
+console.log("null", n);
+
+console.log("type of variable", typeof null);
+
+// 6. object datatype
+
+let obj = { name: "gohil", name: "gnandipsinh" };
+
+console.log("object is an ", obj);
+
+console.log("type of variable  in js", typeof obj);
+
+// 7.symbol datatype
+
+let sym = Symbol("id");
+
+console.log("symbol", sym);
+
+console.log("type of value :", typeof sym);
+
+// 8.bigint datatype
+
+let big = 1234548745343545637464n;
+
+console.log("bright", big);
+
+console.log("type of variable in js",typeof big);
