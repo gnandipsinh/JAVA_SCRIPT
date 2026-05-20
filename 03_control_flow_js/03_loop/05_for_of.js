@@ -15,4 +15,17 @@ for(let op of str)
         console.log("str op",op);
     }
 
-    
+    let fruits = ["Apple", "Banana", "Mango"];
+
+for(let item of fruits)
+{
+    console.log(item);
+}
+
+
+let str = "JavaScript";
+
+for(let ch of str)
+{
+    console.log(ch);
+}
