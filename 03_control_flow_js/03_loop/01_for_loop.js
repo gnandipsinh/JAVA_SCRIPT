@@ -14,7 +14,7 @@ for (let i = 0; i < fruits.length; i++)
 
 for(let i=1; i<=5; i++)
 {
-    console.log(i);
+    console.log(i);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        uu
 }
 
 
