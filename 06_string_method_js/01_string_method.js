@@ -19,6 +19,8 @@ console.log(
 
 console.log("index of :", text.indexOf("gohil"));
 
+console.log("last index of :","hello good morning every one:", text.lastIndexOf("one"));
+
 // Example 2
 
 let lan = "javascript language";
@@ -37,6 +39,8 @@ console.log("includes:", lan.includes("language"));
 
 console.log("index of:", lan.indexOf("script"));
 
+console.log("last index of:",lan.lastIndexOf("language"))
+
 // Example 3
 
 let student = "welcome student";
@@ -54,3 +58,5 @@ console.log("start with:", student.startsWith("w"));
 console.log("includes:", student.includes("student"));
 
 console.log("index of:", student.indexOf("come"));
+
+console.log("last index of:",student.lastIndexOf("student"));
