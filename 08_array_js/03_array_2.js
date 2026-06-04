@@ -179,3 +179,43 @@ cars.splice(4, 2);
 console.log("After splice() remove:", cars);
 
 console.log("Final Array:", cars);
+
+// manual method in splice and unshift
+
+let fruits3 = ["apple", "banana", "orange"];
+
+// Manual unshift
+for (let i = fruits.length; i > 0; i--) {
+    fruits[i] = fruits[i - 1];
+}
+fruits3[0] = "mango";
+
+console.log(fruits);
+
+// Manual splice add at index 2
+for (let i = fruits.length; i > 2; i--) {
+    fruits[i] = fruits[i - 1];
+}
+fruits3[2] = "grapes";
+
+console.log(fruits);
+
+let colors1 = ["red", "green", "blue"];
+
+// Manual unshift
+for (let i = colors.length; i > 0; i--) {
+    colors[i] = colors[i - 1];
+}
+colors1[0] = "pink";
+
+console.log(colors);
+
+// Manual splice add at index 1
+for (let i = colors.length; i > 1; i--) {
+    colors[i] = colors[i - 1];
+}
+colors[1] = "yellow";
+
+console.log(colors);
+
+
