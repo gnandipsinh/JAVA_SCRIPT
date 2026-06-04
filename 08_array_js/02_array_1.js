@@ -25,28 +25,11 @@ console.log(
   fruits[1],
 );
 
-//add element
-
-let fruits3 = ["banana", "apple", "mango"];
-
-fruits3.push("orange");
-console.log("add array :", fruits3);
-
-fruits3.push("cherry");
-console.log("add value :", fruits3);
-
-fruits3.push("water melon");
-console.log("add value :", fruits3);
-
-fruits3.push("papaya");
-console.log("add value :", fruits3);
-
-fruits3.push("pear");
-console.log("add value :", fruits3);
 
 console.log("fruits after guava added", fruits);
 
-// example 2
+//example 2
+
 
 let colors = ["red", "green", "blue", "yellow"];
 
@@ -60,15 +43,9 @@ colors[2] = "black";
 
 console.log("updated colors", colors);
 
-// add element
+//example 3
 
-colors.push("white");
-console.log("after adding white", colors);
 
-colors.push("pink");
-console.log("after adding pink", colors);
-
-// example 3
 
 let cars = ["ford", "bmw", "audi", "kia"];
 
@@ -80,15 +57,9 @@ cars[0] = "toyota";
 
 console.log("updated cars", cars);
 
-// add element
+//example 4
 
-cars.push("honda");
-console.log("after adding honda", cars);
 
-cars.push("hyundai");
-console.log("after adding hyundai", cars);
-
-// example 4
 
 let cities = ["Bhavnagar", "Rajkot", "Surat", "Ahmedabad"];
 
@@ -100,12 +71,3 @@ console.log("last city", cities[3]);
 
 cities[2] = "Vadodara";
 
-console.log("updated cities", cities);
-
-// add element
-
-cities.push("Junagadh");
-console.log("after adding Junagadh", cities);
-
-cities.push("Jamnagar");
-console.log("after adding Jamnagar", cities);

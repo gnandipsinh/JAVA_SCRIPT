@@ -1,47 +1,181 @@
-// length calculation  in array
+const fruits = ["apple", "banana", "orange", "guava", "cherry"];
 
-const fruits = ["apple", "banana", "cheery", "mango", "graphs", "watermelon"];
+// Original Array
+console.log("Original Array:", fruits);
 
-console.log("fruits length:", fruits.length);
+console.log("Length:", fruits.length);
 
-// increase and decrease array length
+// push() - Add element at end
+fruits.push("strawberry");
 
-console.log("fruits element and their length before:", fruits.length, fruits);
+console.log("After push():", fruits);
 
-// increase length of array
+console.log("Length:", fruits.length);
 
-fruits.length = 10;
+// unshift() - Add element at start
+fruits.unshift("mango");
 
-console.log("length after increase:", fruits.length, fruits);
+console.log("After unshift():", fruits);
 
-//decrease length of array
+console.log("Length:", fruits.length);
 
-fruits.length = 4;
+// pop() - Remove last element
+fruits.pop();
 
-console.log("length after decrease:", fruits.length, fruits);
+console.log("After pop():", fruits);
 
-// using manual methods
+console.log("Length:", fruits.length);
 
+// shift() - Remove first element
+fruits.shift();
 
-const fruits1=["apple","banana","mango","guava","kiwi"];
+console.log("After shift():", fruits);
 
-const NewFruits=[];
+console.log("Length:", fruits.length);
 
-let i=0;
-for(const fruit of fruits)
-{
-    NewFruits[i]=fruit;
+// splice() - Add elements
+fruits.splice(2, 0, "watermelon", "grapes");
 
-    i++;
-}
+console.log("After splice() add:", fruits);
 
-NewFruits[i]="orange";
+console.log("Length:", fruits.length);
 
-console.log(NewFruits);
+// splice() - Remove elements
+fruits.splice(5, 2);
 
+console.log("After splice() remove:", fruits);
 
+console.log("Length:", fruits.length);
 
+// Index out of range
+fruits.splice(8, 10);
 
+console.log("Final Array:", fruits);
 
+console.log("Length:", fruits.length);
 
+// example 2
+const colors = ["red", "green", "blue", "yellow", "black"];
 
+console.log("Original Array:", colors);
+
+colors.push("white");
+
+console.log("After push():", colors);
+
+colors.unshift("pink");
+
+console.log("After unshift():", colors);
+
+colors.pop();
+
+console.log("After pop():", colors);
+
+colors.shift();
+
+console.log("After shift():", colors);
+
+colors.splice(2, 0, "orange", "purple");
+
+console.log("After splice() add:", colors);
+
+colors.splice(4, 2);
+
+console.log("After splice() remove:", colors);
+
+console.log("Final Array:", colors);
+
+//example 3
+
+const cities = ["Rajkot", "Ahmedabad", "Surat", "Vadodara", "Bhavnagar"];
+
+console.log("Original Array:", cities);
+
+cities.push("Junagadh");
+
+console.log("After push():", cities);
+
+cities.unshift("Gandhinagar");
+
+console.log("After unshift():", cities);
+
+cities.pop();
+
+console.log("After pop():", cities);
+
+cities.shift();
+
+console.log("After shift():", cities);
+
+cities.splice(2, 0, "Morbi", "Jamnagar");
+
+console.log("After splice() add:", cities);
+
+cities.splice(4, 2);
+
+console.log("After splice() remove:", cities);
+
+console.log("Final Array:", cities);
+
+//example 4
+const animals = ["Lion", "Tiger", "Elephant", "Monkey", "Deer"];
+
+console.log("Original Array:", animals);
+
+animals.push("Zebra");
+
+console.log("After push():", animals);
+
+animals.unshift("Bear");
+
+console.log("After unshift():", animals);
+
+animals.pop();
+
+console.log("After pop():", animals);
+
+animals.shift();
+
+console.log("After shift():", animals);
+
+animals.splice(2, 0, "Fox", "Wolf");
+
+console.log("After splice() add:", animals);
+
+animals.splice(4, 2);
+
+console.log("After splice() remove:", animals);
+
+console.log("Final Array:", animals);
+
+//example 5
+
+const cars = ["BMW", "Audi", "Honda", "Toyota", "Kia"];
+
+console.log("Original Array:", cars);
+
+cars.push("Mercedes");
+
+console.log("After push():", cars);
+
+cars.unshift("Ford");
+
+console.log("After unshift():", cars);
+
+cars.pop();
+
+console.log("After pop():", cars);
+
+cars.shift();
+
+console.log("After shift():", cars);
+
+cars.splice(2, 0, "Tesla", "Hyundai");
+
+console.log("After splice() add:", cars);
+
+cars.splice(4, 2);
+
+console.log("After splice() remove:", cars);
+
+console.log("Final Array:", cars);
