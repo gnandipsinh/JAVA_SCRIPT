@@ -16,7 +16,7 @@ let molProduct = [
 
     {
         name:"soda",
-        price : 80,
+        price : 80,  
         quality:10,
     },
     {
