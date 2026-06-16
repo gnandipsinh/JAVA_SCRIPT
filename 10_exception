@@ -1,0 +1,33 @@
+
+// const atmPin  = 1223;
+
+
+// function Pin(pin) {
+//     if (pin === atmPin) {
+//         console.log("Correct ATM PIN");
+//     } else {
+//         throw new Error("Invalid ATM PIN");
+//     }
+
+//     console.log("this is a correct answer")
+// }
+
+// Pin(11313);
+
+// const atmPin = 1223;
+
+function Pin(pin) {
+    if (pin === atmPin) {
+        console.log("Correct ATM PIN");
+    } else {
+        throw new Error("Invalid ATM PIN");
+    }
+
+    console.log("this is a correct answer");
+}
+
+try {
+    Pin(11313);
+} catch (error) {
+    console.log("Error:", error.message);
+}
