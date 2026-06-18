@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #020617, #1e1b4b, #312e81, #0f172a);
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #8b5cf6;
+  border-radius: 50%;
+  top: -200px;
+  left: -150px;
+  filter: blur(180px);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #06b6d4;
+  border-radius: 50%;
+  bottom: -200px;
+  right: -150px;
+  filter: blur(180px);
+}
+
+.card {
+  width: 500px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.input-box {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 15px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.input-box::placeholder {
+  color: #d1d5db;
+}
+
+.input-box:focus {
+  box-shadow: 0 0 20px #8b5cf6;
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  transition: 0.4s;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(6, 182, 212, 0.4);
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 15px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}

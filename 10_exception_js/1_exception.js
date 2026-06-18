@@ -1,5 +1,5 @@
 
-// const atmPin  = 1223;
+// const atmPin  = 2122;
 
 
 // function Pin(pin) {
@@ -12,9 +12,9 @@
 //     console.log("this is a correct answer")
 // }
 
-// Pin(11313);
+// Pin(2526);
 
-// const atmPin = 1223;
+// const atmPin = 1224;
 
 function Pin(pin) {
     if (pin === atmPin) {
@@ -26,8 +26,11 @@ function Pin(pin) {
     console.log("this is a correct answer");
 }
 
-try {
-    Pin(11313);
-} catch (error) {
+try 
+{
+    Pin(1245);
+} 
+catch (error)
+{
     console.log("Error:", error.message);
 }
