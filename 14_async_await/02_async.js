@@ -49,3 +49,100 @@ async function bookMovieTicket() {
 }
 
 bookMovieTicket();
+
+
+// function orderFood() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log("Food Ordered");
+//             resolve("Pizza");
+//         }, 1000);
+//     });
+// }
+
+// function prepareFood(food) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log(`${food} Prepared`);
+//             resolve(food);
+//         }, 2000);
+//     });
+// }
+
+// function deliverFood(food) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log(`${food} Delivered`);
+//             resolve("Enjoy Your Meal!");
+//         }, 1000);
+//     });
+// }
+
+// async function foodApp() {
+//     try {
+//         const food = await orderFood();
+//         const prepared = await prepareFood(food);
+//         const result = await deliverFood(prepared);
+
+//         console.log(result);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// foodApp();
+
+
+// function selectProduct() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log("Product Selected");
+//             resolve("Laptop");
+//         }, 1000);
+//     });
+// }
+
+// function placeOrder(product) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log("Order Placed");
+//             resolve(product);
+//         }, 2000);
+//     });
+// }
+
+// function shipProduct(product) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log(`${product} Shipped`);
+//             resolve(product);
+//         }, 1000);
+//     });
+// }
+
+// function deliverProduct(product) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log(`${product} Delivered`);
+//             resolve("Shopping Completed");
+//         }, 1000);
+//     });
+// }
+
+// async function shoppingApp() {
+//     try {
+//         const product = await selectProduct();
+//         const order = await placeOrder(product);
+//         const shipped = await shipProduct(order);
+//         const result = await deliverProduct(shipped);
+
+//         console.log(result);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// shoppingApp();
+
+
+
