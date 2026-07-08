@@ -215,30 +215,30 @@ const products = [
       addToCart: "/api/products/18/cart",
     },
   },
-  {
-    id: 19,
-    name: "Portable Bluetooth Projector",
-    price: 6999,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=500&q=80",
-    actions: {
-      buy: "/api/products/19/buy",
-      addToCart: "/api/products/19/cart",
-    },
-  },
-  {
-    id: 20,
-    name: "USB Type-C Hub 7-in-1",
-    price: 1699,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=500&q=80",
-    actions: {
-      buy: "/api/products/20/buy",
-      addToCart: "/api/products/20/cart",
-    },
-  },
+  // {
+  //   id: 19,
+  //   name: "Portable Bluetooth Projector",
+  //   price: 6999,
+  //   currency: "INR",
+  //   image:
+  //     "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=500&q=80",
+  //   actions: {
+  //     buy: "/api/products/19/buy",
+  //     addToCart: "/api/products/19/cart",
+  //   },
+  // },
+  // {
+  //   id: 20,
+  //   name: "USB Type-C Hub 7-in-1",
+  //   price: 1699,
+  //   currency: "INR",
+  //   image:
+  //     "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=500&q=80",
+  //   actions: {
+  //     buy: "/api/products/20/buy",
+  //     addToCart: "/api/products/20/cart",
+  //   },
+  // },
 ];
 
 function showProduct() {
@@ -272,3 +272,23 @@ function showProduct() {
 }
 
 showProduct();
+
+
+  // local storage
+
+  // set and get
+
+  const data = {
+
+    name:"Gohil Gnandipsinh",
+    work:"developer"
+  }
+
+  localStorage.setItem("data",JSON.stringify(data))
+
+// get 
+
+const user = JSON.A(localStorage.getItem("data"));
+
+
+console.log(user)
