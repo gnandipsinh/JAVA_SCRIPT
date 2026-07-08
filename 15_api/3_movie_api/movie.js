@@ -38,3 +38,4 @@ document.getElementById("form").addEventListener("submit", async (e) => {
         container.innerHTML = "<h2>Something went wrong!</h2>";
     }
 });
+
