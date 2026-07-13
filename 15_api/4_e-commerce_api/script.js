@@ -1,294 +1,258 @@
-const products = [
-  {
-    id: 1,
-    name: "Wireless Bluetooth Earbuds",
-    price: 1499,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80",
-    actions: {
-      buy: "/api/products/1/buy",
-      addToCart: "/api/products/1/cart",
-    },
-  },
-  {
-    id: 2,
-    name: "Smart Watch Series 5",
-    price: 3999,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=500&q=80",
-    actions: {
-      buy: "/api/products/2/buy",
-      addToCart: "/api/products/2/cart",
-    },
-  },
-  {
-    id: 3,
-    name: "Laptop Backpack",
-    price: 899,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
-    actions: {
-      buy: "/api/products/3/buy",
-      addToCart: "/api/products/3/cart",
-    },
-  },
-  {
-    id: 4,
-    name: "USB-C Fast Charger 65W",
-    price: 1299,
-    currency: "INR",
-    image:
-      "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=500,height=500,quality=75/product/Yarr-65w-gan-3-port-power-adapter-with-type-c-to-type-c-cable-white-Flat-View.png",
-    actions: {
-      buy: "/api/products/4/buy",
-      addToCart: "/api/products/4/cart",
-    },
-  },
-  {
-    id: 5,
-    name: "Mechanical Gaming Keyboard",
-    price: 2499,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&q=80",
-    actions: {
-      buy: "/api/products/5/buy",
-      addToCart: "/api/products/5/cart",
-    },
-  },
-  {
-    id: 6,
-    name: "Wireless Mouse",
-    price: 599,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500&q=80",
-    actions: {
-      buy: "/api/products/6/buy",
-      addToCart: "/api/products/6/cart",
-    },
-  },
-  {
-    id: 7,
-    name: "Portable Power Bank 20000mAh",
-    price: 1799,
-    currency: "INR",
-    image:
-      "https://callmateindia.com/cdn/shop/files/4_e178b992-b1d5-413b-8315-25dc6b166e75.jpg?v=1721379891&width=1000",
-    actions: {
-      buy: "/api/products/7/buy",
-      addToCart: "/api/products/7/cart",
-    },
-  },
-  {
-    id: 8,
-    name: "Bluetooth Speaker",
-    price: 1999,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80",
-    actions: {
-      buy: "/api/products/8/buy",
-      addToCart: "/api/products/8/cart",
-    },
-  },
-  {
-    id: 9,
-    name: "HD Webcam 1080p",
-    price: 1599,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1626581795188-8efb9a00eeec?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHdlYmNhbXxlbnwwfHwwfHx8MA%3D%3D",
-    actions: {
-      buy: "/api/products/9/buy",
-      addToCart: "/api/products/9/cart",
-    },
-  },
-  {
-    id: 10,
-    name: "Noise Cancelling Headphones",
-    price: 4999,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
-    actions: {
-      buy: "/api/products/10/buy",
-      addToCart: "/api/products/10/cart",
-    },
-  },
-  {
-    id: 11,
-    name: "Smartphone Stand",
-    price: 299,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500&q=80",
-    actions: {
-      buy: "/api/products/11/buy",
-      addToCart: "/api/products/11/cart",
-    },
-  },
-  {
-    id: 12,
-    name: "External Hard Drive 1TB",
-    price: 3499,
-    currency: "INR",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3CfrOY8fSuLSWk0j4RUm0bjyftawfKTcUm9TDtFj7w2zA-PWZx1xfI-k&s=10",
-    actions: {
-      buy: "/api/products/12/buy",
-      addToCart: "/api/products/12/cart",
-    },
-  },
-  {
-    id: 13,
-    name: "Gaming Chair",
-    price: 8999,
-    currency: "INR",
-    image:
-      "https://www.greensoul.online/cdn/shop/files/r1.jpg?v=1756712404&width=1080",
-    actions: {
-      buy: "/api/products/13/buy",
-      addToCart: "/api/products/13/cart",
-    },
-  },
-  {
-    id: 14,
-    name: "LED Desk Lamp",
-    price: 799,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&q=80",
-    actions: {
-      buy: "/api/products/14/buy",
-      addToCart: "/api/products/14/cart",
-    },
-  },
-  {
-    id: 15,
-    name: "Wireless Charging Pad",
-    price: 999,
-    currency: "INR",
-    image:
-      "https://media-ik.croma.com/Croma%20Assets/Communication/Chargers%20and%20Batteries/Images/265098_0_n6d8st.png",
-    actions: {
-      buy: "/api/products/15/buy",
-      addToCart: "/api/products/15/cart",
-    },
-  },
-  {
-    id: 16,
-    name: "Laptop Cooling Pad",
-    price: 1199,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&q=80",
-    actions: {
-      buy: "/api/products/16/buy",
-      addToCart: "/api/products/16/cart",
-    },
-  },
-  {
-    id: 17,
-    name: "Smart LED Bulb",
-    price: 499,
-    currency: "INR",
-    image:
-      "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-smart-led-bulb/m/7480527f0c471cacb8ec8bb75f5c8ad0.jpg",
-    actions: {
-      buy: "/api/products/17/buy",
-      addToCart: "/api/products/17/cart",
-    },
-  },
-  {
-    id: 18,
-    name: "Fitness Tracker Band",
-    price: 1899,
-    currency: "INR",
-    image:
-      "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&q=80",
-    actions: {
-      buy: "/api/products/18/buy",
-      addToCart: "/api/products/18/cart",
-    },
-  },
-  // {
-  //   id: 19,
-  //   name: "Portable Bluetooth Projector",
-  //   price: 6999,
-  //   currency: "INR",
-  //   image:
-  //     "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=500&q=80",
-  //   actions: {
-  //     buy: "/api/products/19/buy",
-  //     addToCart: "/api/products/19/cart",
-  //   },
-  // },
-  // {
-  //   id: 20,
-  //   name: "USB Type-C Hub 7-in-1",
-  //   price: 1699,
-  //   currency: "INR",
-  //   image:
-  //     "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=500&q=80",
-  //   actions: {
-  //     buy: "/api/products/20/buy",
-  //     addToCart: "/api/products/20/cart",
-  //   },
-  // },
-];
 
-function showProduct() {
-  const product = document.getElementById("product-list");
+let products = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  product.innerHTML = "";
 
-  products.forEach((e) => {
-    product.innerHTML += `
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
 
-                         <img src="${e.image}" class="card-img-top" alt="${e.name}" style="height:220px; object-fit:cover;">
+async function loadProducts() {
+  try {
+    const response = await fetch("https://dummyjson.com/products?limit=100");
 
-                        <h5>${e.name}</h5>
+    const data = await response.json();
 
-                        <p>Price : ₹${e.price}</p>
+    products = data.products;
 
-                        <p>Currency : ${e.currency}</p>
+    displayProducts(products);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-                        <button class="btn btn-primary">
-                            Add To Cart
-                        </button>
 
-                    </div>
+function displayProducts(data) {
+  const productList = document.getElementById("product-list");
+
+  const cartItems = document.getElementById("cart-items");
+
+  const checkout = document.getElementById("checkout-section");
+
+  productList.style.display = "flex";
+
+  cartItems.style.display = "none";
+
+  checkout.innerHTML = "";
+
+  productList.innerHTML = "";
+
+  data.forEach((item) => {
+    productList.innerHTML += `
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+            <div class="card h-100 shadow">
+
+                <img
+                    src="${item.thumbnail}"
+                    class="card-img-top"
+                    style="height:220px;object-fit:cover;">
+
+                <div class="card-body d-flex flex-column">
+
+                    <small class="text-secondary">
+                        ${item.brand}
+                    </small>
+
+                    <h5>
+                        ${item.title}
+                    </h5>
+
+                    <p>
+
+                        ⭐ ${item.rating}
+
+                    </p>
+
+                    <h4 class="text-success">
+
+                        ₹${item.price}
+
+                    </h4>
+
+                    <button
+                        class="btn btn-warning w-100"
+
+                        onclick="addToCart(${item.id})">
+
+                        Add To Cart
+
+                    </button>
+
+                    <button
+                        class="btn btn-success w-100 mt-2"
+
+                        onclick="buyNow(${item.id})">
+
+                        Buy Now
+
+                    </button>
+
                 </div>
+
             </div>
+
+        </div>
+
         `;
   });
 }
 
-showProduct();
 
 
-  // local storage
+function addToCart(id) {
+  const product = products.find((item) => item.id == id);
 
-  // set and get
+  const existing = cart.find((item) => item.id == id);
 
-  const data = {
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({
+      ...product,
 
-    name:"Gohil Gnandipsinh",
-    work:"developer"
+      qty: 1,
+    });
   }
 
-  localStorage.setItem("data",JSON.stringify(data))
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-// get 
+  updateCartCount();
 
-const user = JSON.A(localStorage.getItem("data"));
+  alert("Added Successfully");
+}
 
 
-console.log(user)
+
+function updateCartCount() {
+  let total = 0;
+
+  cart.forEach((item) => {
+    total += item.qty;
+  });
+
+  document.getElementById("cart-count").innerText = total;
+}
+
+
+function showCart() {
+  document.getElementById("product-list").style.display = "none";
+
+  const cartItems = document.getElementById("cart-items");
+  const checkout = document.getElementById("checkout-section");
+
+  cartItems.style.display = "flex";
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    checkout.innerHTML = "";
+
+    cartItems.innerHTML = `
+            <div class="col-12 text-center">
+                <h2>Cart Is Empty</h2>
+            </div>
+        `;
+
+    return;
+  }
+
+  let grandTotal = 0;
+
+  cart.forEach((item) => {
+    grandTotal += item.price * item.qty;
+
+    cartItems.innerHTML += `
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+            <div class="card h-100 shadow">
+
+                <img src="${item.thumbnail}"
+                class="card-img-top"
+                style="height:220px;object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h5>${item.title}</h5>
+
+                    <h4 class="text-success">
+                        ₹${item.price}
+                    </h4>
+
+                    <p>
+                        Quantity : ${item.qty}
+                    </p>
+
+                    <p>
+                        Total : ₹${item.price * item.qty}
+                    </p>
+
+                    <div class="d-flex gap-2">
+
+                        <button
+                        class="btn btn-success w-50"
+                        onclick="increaseQty(${item.id})">
+
+                        +
+
+                        </button>
+
+                        <button
+                        class="btn btn-danger w-50"
+                        onclick="decreaseQty(${item.id})">
+
+                        -
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+  });
+
+  checkout.innerHTML = `
+
+    <div class="card shadow p-4">
+
+        <h3>
+            Grand Total : ₹${grandTotal}
+        </h3>
+
+        <button
+        class="btn btn-success mt-3"
+        onclick="checkout()">
+
+        Proceed To Checkout
+
+        </button>
+
+    </div>
+
+    `;
+}
+
+function increaseQty(id) {
+  const product = cart.find((item) => item.id == id);
+
+  if (product) {
+    product.qty++;
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  updateCartCount();
+
+  showCart();
+}
+
+
+
+
+
+updateCartCount();
+
+loadProducts();
