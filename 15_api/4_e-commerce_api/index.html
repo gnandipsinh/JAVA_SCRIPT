@@ -33,7 +33,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <!-- Menu -->
 
                     <ul class="navbar-nav mx-auto">
 
@@ -43,29 +42,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="showProducts()">
-                                Products
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Categories
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Offers
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Contact
-                            </a>
-                        </li>
 
                     </ul>
 
@@ -74,7 +51,7 @@
                     <div class="d-flex align-items-center gap-2">
 
                         <input id="search" type="text" class="form-control" placeholder="Search Product..."
-                            onkeyup="searchProduct()">
+                            onclick="searchProduct()">
 
                         <button class="btn btn-light" onclick="searchProduct()">
 
@@ -86,23 +63,19 @@
 
 
 
-                  
 
 
-                  
 
 
-                    <button class="btn btn-warning position-relative ms-3" onclick="showCart()">
+                    <button class="btn btn-warning position-relative ms-3" data-bs-toggle="modal"
+                        data-bs-target="#cartModal" onclick="showCart()">
 
                         <i class="bi bi-cart-fill"></i>
-
                         Cart
 
                         <span id="cart-count"
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
                             0
-
                         </span>
 
                     </button>
@@ -138,6 +111,79 @@
 
 
         <div id="checkout-section" class="mt-4">
+
+        </div>
+
+        <div class="modal fade" id="cartModal" tabindex="-1">
+
+            <div class="modal-dialog modal-xl">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            Shopping Cart
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <table class="table table-bordered table-hover text-center align-middle">
+
+                            <thead class="table-dark">
+
+
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Image</th>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="cart-body">
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+
+                        <h4 class="mb-0">
+                            Total :
+                            <span id="grand-total">₹0</span>
+                        </h4>
+
+                        <div>
+
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+
+                            <button class="btn btn-success">
+                                Checkout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
 
         </div>
 

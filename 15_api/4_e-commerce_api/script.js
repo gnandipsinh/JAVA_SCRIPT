@@ -1,9 +1,9 @@
 let products = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 async function loadProducts() {
   try {
     const response = await fetch("https://dummyjson.com/products?limit=100");
-
     const data = await response.json();
 
     products = data.products;
@@ -19,42 +19,30 @@ function displayProducts(data) {
 
   productList.innerHTML = "";
 
-  productList.style.display = "flex";
-
   data.forEach((item) => {
     productList.innerHTML += `
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
             <div class="card h-100 shadow">
 
-                <img
-                    src="${item.thumbnail}"
+                <img src="${item.thumbnail}"
                     class="card-img-top"
-                    style="height:220px; object-fit:cover;">
+                    style="height:220px;object-fit:cover;">
 
                 <div class="card-body d-flex flex-column">
 
-                    <small class="text-secondary">
-                        ${item.brand}
-                    </small>
+                    <small class="text-secondary">${item.brand}</small>
 
-                    <h5>
-                        ${item.title}
-                    </h5>
+                    <h5>${item.title}</h5>
 
-                    <p>
-                        ⭐ ${item.rating}
-                    </p>
+                    <p>⭐ ${item.rating}</p>
 
-                    <h4 class="text-success">
-                        ₹${item.price}
-                    </h4>
+                    <h4 class="text-success">₹${item.price}</h4>
 
-                    <button
-                        class="btn btn-success mt-auto"
-                        onclick="buyNow(${item.id})">
+                    <button class="btn btn-success mt-auto"
+                        onclick="addToCart(${item.id})">
 
-                        Buy Now
+                        Add To Cart
 
                     </button>
 
@@ -67,55 +55,145 @@ function displayProducts(data) {
   });
 }
 
+function addToCart(id) {
+  let product = products.find((item) => item.id === id);
 
+  let exist = cart.find((item) => item.id === id);
 
-function sortProducts(type) {
-  let data = [...products];
-
-  if (type === "low") {
-    data.sort((a, b) => a.price - b.price);
+  if (exist) {
+    exist.qty++;
+  } else {
+    cart.push({
+      id: product.id,
+      title: product.title,
+      thumbnail: product.thumbnail,
+      price: product.price,
+      qty: 1,
+    });
   }
 
-  if (type === "high") {
-    data.sort((a, b) => b.price - a.price);
-  }
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-  displayProducts(data);
+  updateCartCount();
 }
 
-function filterCategory(category) {
-  if (category === "all") {
-    displayProducts(products);
+function updateCartCount() {
+  document.getElementById("cart-count").innerHTML = cart.length;
+}
+
+function showCart() {
+  let cartBody = document.getElementById("cart-body");
+
+  let total = 0;
+
+  cartBody.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartBody.innerHTML = `
+        <tr>
+            <td colspan="6" class="text-center text-danger">
+                Cart is Empty
+            </td>
+        </tr>
+        `;
+
+    document.getElementById("grand-total").innerHTML = "₹0.00";
+
     return;
   }
 
-  const filtered = products.filter(
-    (item) => item.category === category
-  );
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
 
-  displayProducts(filtered);
+    cartBody.innerHTML += `
+        <tr>
+
+            <td>${index + 1}</td>
+
+            <td>
+                <img src="${item.thumbnail}" width="60">
+            </td>
+
+            <td>${item.title}</td>
+
+            <td>
+
+                <button class="btn btn-danger btn-sm"
+                    onclick="decreaseQty(${item.id})">
+                    -
+                </button>
+
+                <span class="mx-2 fw-bold">
+                    ${item.qty}
+                </span>
+
+                <button class="btn btn-success btn-sm"
+                    onclick="increaseQty(${item.id})">
+                    +
+                </button>
+
+            </td>
+
+            <td>
+                ₹${(item.price * item.qty).toFixed(2)}
+            </td>
+
+              <td>
+
+               <button class="btn btn-danger btn-sm"
+                  type="button"
+                  onclick="removeCart(${item.id})">
+                  Remove
+                </button>
+
+              </td>
+
+        </tr>
+        `;
+
+  });
+
+  document.getElementById("grand-total").innerHTML = "₹" + total.toFixed(2);
 }
 
-function viewProduct(id) {
-  const product = products.find((item) => item.id == id);
+function increaseQty(id) {
+  let product = cart.find((item) => item.id == id);
+
+  if (product) {
+    product.qty++;
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  showCart();
+}
+
+function decreaseQty(id) {
+  let product = cart.find((item) => item.id == id);
 
   if (!product) return;
 
-  alert(`
-Product : ${product.title}
+  if (product.qty > 1) {
+    product.qty--;
+  } else {
+    removeCart(id);
+    return;
+  }
 
-Price : ₹${product.price}
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-Brand : ${product.brand}
-
-Category : ${product.category}
-
-Rating : ⭐ ${product.rating}
-  `);
+  showCart();
 }
 
-function showHome() {
-  loadProducts();
-}
+// function removeCart(id) {
+//   cart = cart.filter((item) => item.id !== id);
+
+//   localStorage.setItem("cart", JSON.stringify(cart));
+
+//   updateCartCount();
+
+//   showCart();
+// }
 
 loadProducts();
+updateCartCount();
