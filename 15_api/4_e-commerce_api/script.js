@@ -1,9 +1,11 @@
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let editId = null;
 
 async function loadProducts() {
   try {
     const response = await fetch("https://dummyjson.com/products?limit=100");
+
     const data = await response.json();
 
     products = data.products;
@@ -21,28 +23,47 @@ function displayProducts(data) {
 
   data.forEach((item) => {
     productList.innerHTML += `
+
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
             <div class="card h-100 shadow">
 
                 <img src="${item.thumbnail}"
-                    class="card-img-top"
-                    style="height:220px;object-fit:cover;">
+                class="card-img-top"
+                style="height:220px;object-fit:cover;">
 
                 <div class="card-body d-flex flex-column">
 
-                    <small class="text-secondary">${item.brand}</small>
+                    <small class="text-secondary">
+                        ${item.brand ?? "LuxuryShop"}
+                    </small>
 
                     <h5>${item.title}</h5>
 
-                    <p>⭐ ${item.rating}</p>
+                    <p>⭐ ${item.rating ?? "-"}</p>
 
-                    <h4 class="text-success">₹${item.price}</h4>
+                    <h4 class="text-success">
+                        ₹${item.price}
+                    </h4>
 
-                    <button class="btn btn-success mt-auto"
-                        onclick="addToCart(${item.id})">
+                    <button class="btn btn-success mt-auto mt-2"
+                    onclick="addToCart(${item.id})">
 
                         Add To Cart
+
+                    </button>
+
+                    <button class="btn btn-primary mt-2"
+                      onclick="editProduct(${item.id})">
+
+                      Edit
+
+                    </button>
+
+                    <button class="btn btn-danger mt-2"
+                    onclick="deleteProduct(${item.id})">
+
+                        Delete
 
                     </button>
 
@@ -51,23 +72,103 @@ function displayProducts(data) {
             </div>
 
         </div>
+
         `;
   });
 }
 
-function addToCart(id) {
-  let product = products.find((item) => item.id === id);
+function saveProduct() {
+  let title = document.getElementById("title").value;
+  let price = document.getElementById("price").value;
+  let thumbnail = document.getElementById("thumbnail").value;
 
-  let exist = cart.find((item) => item.id === id);
+  if (title == "" || price == "" || thumbnail == "") {
+    alert("All Fields Required");
+
+    return;
+  }
+
+  if (editId == null) {
+    products.push({
+      id: Date.now(),
+
+      title: title,
+
+      price: Number(price),
+
+      thumbnail: thumbnail,
+
+      brand: "LuxuryShop",
+
+      rating: 5,
+    });
+  } else {
+    let product = products.find((item) => item.id == editId);
+
+    if (product) {
+      product.title = title;
+      product.price = Number(price);
+      product.thumbnail = thumbnail;
+    }
+
+    editId = null;
+  }
+
+  displayProducts(products);
+
+  clearForm();
+
+  let modal = bootstrap.Modal.getInstance(
+    document.getElementById("productModal"),
+  );
+
+  if (modal) {
+    modal.hide();
+  }
+}
+function editProduct(id) {
+  let product = products.find((item) => item.id == id);
+
+  if (!product) {
+    return;
+  }
+
+  document.getElementById("title").value = product.title;
+  document.getElementById("price").value = product.price;
+  document.getElementById("thumbnail").value = product.thumbnail;
+
+  editId = id;
+
+  let modal = new bootstrap.Modal(document.getElementById("productModal"));
+
+  modal.show();
+}
+
+function deleteProduct(id) {
+  products = products.filter((item) => item.id != id);
+
+  displayProducts(products);
+}
+
+function addToCart(id) {
+  let product = products.find((item) => item.id == id);
+
+  if (!product) return;
+
+  let exist = cart.find((item) => item.id == id);
 
   if (exist) {
     exist.qty++;
   } else {
     cart.push({
       id: product.id,
+
       title: product.title,
+
       thumbnail: product.thumbnail,
+
       price: product.price,
+
       qty: 1,
     });
   }
@@ -88,16 +189,15 @@ function showCart() {
 
   cartBody.innerHTML = "";
 
-  if (cart.length === 0) {
+  if (cart.length == 0) {
     cartBody.innerHTML = `
         <tr>
-            <td colspan="6" class="text-center text-danger">
+            <td colspan="6" class="text-danger text-center">
                 Cart is Empty
             </td>
-        </tr>
-        `;
+        </tr>`;
 
-    document.getElementById("grand-total").innerHTML = "₹0.00";
+    document.getElementById("grand-total").innerHTML = "₹0";
 
     return;
   }
@@ -106,6 +206,7 @@ function showCart() {
     total += item.price * item.qty;
 
     cartBody.innerHTML += `
+
         <tr>
 
             <td>${index + 1}</td>
@@ -119,7 +220,7 @@ function showCart() {
             <td>
 
                 <button class="btn btn-danger btn-sm"
-                    onclick="decreaseQty(${item.id})">
+                onclick="decreaseQty(${item.id})">
                     -
                 </button>
 
@@ -128,7 +229,7 @@ function showCart() {
                 </span>
 
                 <button class="btn btn-success btn-sm"
-                    onclick="increaseQty(${item.id})">
+                onclick="increaseQty(${item.id})">
                     +
                 </button>
 
@@ -138,19 +239,20 @@ function showCart() {
                 ₹${(item.price * item.qty).toFixed(2)}
             </td>
 
-              <td>
+            <td>
 
-               <button class="btn btn-danger btn-sm"
-                  type="button"
-                  onclick="removeCart(${item.id})">
-                  Remove
+                <button class="btn btn-danger btn-sm"
+                onclick="removeCart(${item.id})">
+
+                    Remove
+
                 </button>
 
-              </td>
+            </td>
 
         </tr>
-        `;
 
+        `;
   });
 
   document.getElementById("grand-total").innerHTML = "₹" + total.toFixed(2);
@@ -177,6 +279,7 @@ function decreaseQty(id) {
     product.qty--;
   } else {
     removeCart(id);
+
     return;
   }
 
@@ -186,51 +289,45 @@ function decreaseQty(id) {
 }
 
 function removeCart(id) {
+  cart = cart.filter((item) => item.id != id);
 
-    cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
 
-    updateCartCount();
-
-    if (cart.length === 0) {
-
-        const modal = bootstrap.Modal.getOrCreateInstance(
-            document.getElementById("cartModal")
-        );
-
-        modal.hide();
-
-        return;
-    }
-
-    showCart();
+  showCart();
 }
 
-
 function checkout() {
+  if (cart.length === 0) {
+    alert("Cart is Empty");
 
-    if (cart.length === 0) {
-        alert("Cart is Empty");
-        return;
-    }
+    return;
+  }
 
-    alert("Order Placed Successfully 🎉");
+  alert("Order Placed Successfully");
 
- 
-    cart = [];
+  cart = [];
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount();
+  updateCartCount();
 
-    showCart();
+  showCart();
 
-    const modalElement = document.getElementById("cartModal");
-    const modal = bootstrap.Modal.getInstance(modalElement);
+  const modal = bootstrap.Modal.getInstance(
+    document.getElementById("cartModal"),
+  );
 
+  if (modal) {
     modal.hide();
+  }
+}
+
+function showProducts() {
+  displayProducts(products);
 }
 
 loadProducts();
+
 updateCartCount();
